@@ -1,8 +1,36 @@
 # Algorithm study
 - data structure
   - linear
-    - g
+    - array
+    - stack
+    - queue
+    - dequeue
+    - hash
+  - non-linear
+    - heap
+    - priority queue
+    - tree
+    - trie
+    
 - algorithm
-  - 
+  - greedy
+  - sort
+    - n-square sort
+    - nlogn sort
+    - ect sort
+  - binary search
+  - devide and conquer
+  - backtracking
+  - two pointer
+  - dynamic programming
+    - tabulation
+    - memoization
+  - shortest path
+    - dijkstra
+    - bellman ford
+    - floyd warshall
+  - minimum spanning tree
+    - kruskal
+    - prim
 
 - backjoon, programmers 문제 풀이
