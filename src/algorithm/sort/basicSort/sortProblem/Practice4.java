@@ -1,4 +1,4 @@
-package algorithm.sortProblem;// Practice4
+package algorithm.sort.basicSort.sortProblem;// Practice4
 // 정수 배열 nums 가 주어졌을 때
 // 오름차순으로 정렬하기 위해 배열 내에서 정렬이 필요한 구간의 길이를 출력하는 프로그램을 작성하세요.
 

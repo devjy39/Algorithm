@@ -1,4 +1,4 @@
-package algorithm.sortProblem;// Practice2
+package algorithm.sort.basicSort.sortProblem;// Practice2
 // 문자열 배열 strs 가 주어졌을 때 anagram 으로 묶어서 출력하는 프로그램을 작성하세요.
 // anagram 은 철자 순서를 바꾸면 같아지는 문자를 의미한다.
 // 예) elvis <-> lives
@@ -9,7 +9,10 @@ package algorithm.sortProblem;// Practice2
 // 출력: [[eat, tea, ate], [bat], [tan, nat]]
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Practice2 {
     public static ArrayList<List<String>> solution(String[] strs) {

@@ -1,4 +1,4 @@
-package algorithm.sortProblem;// Practice3
+package algorithm.sort.basicSort.sortProblem;// Practice3
 // intervals 라는 구간으로 이루어진 배열이 주어졌을 때,
 // 오버랩 되는 구간을 합치는 프로그램을 작성하세요.
 

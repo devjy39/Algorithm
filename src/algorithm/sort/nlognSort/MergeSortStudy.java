@@ -1,4 +1,4 @@
-package algorithm.nlognSort;// 알고리즘 - 정렬_2
+package algorithm.sort.nlognSort;// 알고리즘 - 정렬_2
 // 합병 정렬
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package algorithm.sortProblem;// Practice1
+package algorithm.sort.basicSort.sortProblem;// Practice1
 // nums 배열에 3가지 색으로 구분되는 데이터들이 들어 있다.
 // 0은 흰색, 1은 파랑, 2는 빨강이라고 할때
 // 주어진 nums 배열에서 흰색 부터 빨강 순으로 인접하게 정렬시킨 후 출력하는 프로그램을 작성하세요.

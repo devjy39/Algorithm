@@ -1,4 +1,4 @@
-package algorithm.ectSort;
+package algorithm.sort.ectSort;
 /* 셸 정렬
 *  삽입정렬의 약점 : 역순으로 정렬 되어있을 때 최악의 N^2 시간복잡도
 *  이 약점을 보완한 방식

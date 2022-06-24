@@ -1,4 +1,4 @@
-package algorithm.ectSort;
+package algorithm.sort.ectSort;
 // 알고리즘 - 정렬_3
 /* 기수 정렬
 *  낮은 자리 수부터 정렬하는 방식 - 인덱싱방식이랑 비슷

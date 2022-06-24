@@ -1,4 +1,4 @@
-package algorithm.nlognSort;// 힙 정렬
+package algorithm.sort.nlognSort;// 힙 정렬
 
 import java.util.Arrays;
 

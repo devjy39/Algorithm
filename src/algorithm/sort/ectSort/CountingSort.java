@@ -1,4 +1,4 @@
-package algorithm.ectSort;
+package algorithm.sort.ectSort;
 /* 계수 정렬
 *  카운트로 일일이 세서 정렬하는 방식 - 범위가 매우 짧을 때 유효
 *  카운팅 메모리 필요
