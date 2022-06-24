@@ -16,8 +16,11 @@
   - greedy
   - sort
     - n-square sort
+      - selection, insertion, bubble
     - nlogn sort
+      - merge, quick, heap
     - ect sort
+      - shell, counting, radix
   - binary search
   - devide and conquer
   - backtracking
