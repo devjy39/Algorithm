@@ -1,10 +1,11 @@
 package algorithm.MST;
+
 /*  알고리즘 - 최소 신장 트리 Minimum Spanning Tree
 *   그래프 상 모든 노드들을 최소 비용으로 연결. *최단경로와 차이 : 모든 노드를 방문!
 *   kruskal   -> 선택기준 - 간선을 정렬 돌려도 시간이 괜찮겠는가?
 *   간선 중 최소 값을 가진 간선부터 연결, *핵심* : 간선의 *정렬*! + 연결노드표시 + union find
 *   사이클 발생 시 다른 간선 선택 - union-find 배열로 부모노드 가르키는 것 메모
-*   주로 간선 수가 적을 때 사용, O(ElogE)  정렬한 간선만 돌리기 때문에 정렬값만 소모.
+*   주로 간선 수가 적을 때 사용, O(ElogE) 정렬한 간선 돌리기 때문에 정렬값만 소모.
 *
 *   prim
 *   임의 노드에서 시작,현재 갈 수 있는 모든(들른노드 모두 포함)간선 중에서 가장 낮은 가중치를 갖는 간선 선택
@@ -80,7 +81,7 @@ public class MST {
 
         while (!pq.isEmpty()) {
             System.out.println(pq);
-            Node cur = pq.poll();
+            Node cur = pq.remove();
             if (visited[cur.to]) {
                 // 최선의 간선 값이지만, 방문한 노드이므로 이걸로 사이클이 제거됨
                 continue;
