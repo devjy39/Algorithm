@@ -234,11 +234,15 @@ public class Tetris {
     }
 
     private void rotateBlock(MyBlock my) {
+        if (my.blockNum == 7) {
+            return;
+        }
         removeCurBlocks(my.curBlocks);
-        my.blockIdx = (my.blockIdx + 1) % TETRIS_BLOCK[my.blockNum].length;
 
+        my.blockIdx = (my.blockIdx + 1) % TETRIS_BLOCK[my.blockNum].length;
         int[][] newBlocks = TETRIS_BLOCK[my.blockNum][my.blockIdx];
         my.curBlocks.clear();
+        my.standard.y += checkWall(my, newBlocks);
 
         for (int i = 0; i < newBlocks.length; i++) {
             for (int j = 0; j < newBlocks[i].length; j++) {
@@ -248,6 +252,27 @@ public class Tetris {
                 }
             }
         }
+    }
+
+    private int checkWall(MyBlock myBlock, int[][] newBlocks) {
+        int adjustY = 0;
+        boolean isLeft = false;
+
+        for (int[] newBlock : newBlocks) {
+            for (int j = 0; j < newBlock.length; j++) {
+                if (newBlock[j] == 1) {
+                    int y = j + myBlock.standard.y;
+                    if (y < 0) {
+                        adjustY = Math.max(adjustY, -myBlock.standard.y);
+                        isLeft = true;
+                    } else if (y >= W) {
+                        adjustY = Math.max(adjustY, y - W + 1);
+                    }
+                }
+            }
+        }
+
+        return isLeft ? adjustY : -adjustY;
     }
 
     private void leftOrRightMove(MyBlock my, int boundary, int dir) {
