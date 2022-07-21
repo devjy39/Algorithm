@@ -23,6 +23,8 @@
       - shell, counting, radix
   - binary search
   - devide and conquer
+  - bfs
+  - dfs
   - backtracking
   - two pointer
   - dynamic programming
