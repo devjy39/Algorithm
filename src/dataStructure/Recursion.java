@@ -65,7 +65,7 @@ public class Recursion {
         if (a % b == 0) {
             return b;
         }
-        return (gcd(b, a % b));
+        return gcd(b, a % b);
     }
 
     static void swap(int[] arr, int i1, int i2) {
