@@ -41,7 +41,7 @@ public class No1113 {
         PriorityQueue<Block> pq = new PriorityQueue<>(Comparator.comparingInt(x -> x.height));
         addBorder(N, M, visited, pq);
 
-        System.out.println(priorityFirstSearch(visited, pq));
+        System.out.println(dijkstra(visited, pq));
     }
 
     private static void addBorder(int N, int M, boolean[][] visited, PriorityQueue<Block> pq) {
@@ -59,7 +59,7 @@ public class No1113 {
         }
     }
 
-    private static int priorityFirstSearch(boolean[][] visited, PriorityQueue<Block> pq) {
+    private static int dijkstra(boolean[][] visited, PriorityQueue<Block> pq) {
         int water = 0;
         
         while (!pq.isEmpty()) {
