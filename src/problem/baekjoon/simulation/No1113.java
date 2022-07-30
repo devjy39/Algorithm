@@ -59,6 +59,9 @@ public class No1113 {
         }
     }
 
+    /*
+        우선순위를 물의 높이로 구현
+    * */
     private static int dijkstra(boolean[][] visited, PriorityQueue<Block> pq) {
         int water = 0;
         
