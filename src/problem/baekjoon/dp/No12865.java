@@ -19,7 +19,7 @@ public class No12865 {
             int w = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
 
-            /*  거꾸로 접근하므로써 현재 턴에 변한 곳을 탐색 안하기 때문에
+            /*  인덱스를 거꾸로 접근함으로써 현재 턴에 변한 곳을 탐색 안하기 때문에
              *   new 공간이 필요 없음. -> 메모리 절약
              * */
             for (int j = k; j >= w; j--) {
