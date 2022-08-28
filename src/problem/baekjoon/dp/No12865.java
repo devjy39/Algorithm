@@ -15,15 +15,16 @@ public class No12865 {
         int[] dp = new int[k + 1];
 
         for (int i = 0; i < n; i++) {
-            int[] next = dp.clone();
             st = new StringTokenizer(br.readLine());
             int w = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
 
-            for (int j = w; j <= k; j++) {
-                next[j] = Math.max(dp[j], dp[j - w] + v);
+            /*  거꾸로 접근하므로써 현재 턴에 변한 곳을 탐색 안하기 때문에
+             *   new 공간이 필요 없음. -> 메모리 절약
+             * */
+            for (int j = k; j >= w; j--) {
+                dp[j] = Math.max(dp[j], dp[j - w] + v);
             }
-            dp = next;
         }
         br.close();
 
