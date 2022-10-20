@@ -6,23 +6,31 @@ import java.io.InputStreamReader;
 
 public class No2156 {
 
+    static Integer[] dp;
+    static int[] arr;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[][] dp = new int[n + 1][3];
+        dp = new Integer[n + 1];
+        arr = new int[n + 1];
 
         for (int i = 1; i <= n; i++) {
-            int curNumber = Integer.parseInt(br.readLine());
-            dp[i][0] = maxOfThreeArray(dp[i - 1]);
-            dp[i][1] = dp[i - 1][0] + curNumber;
-            dp[i][2] = dp[i - 1][1] + curNumber;
+            arr[i] = Integer.parseInt(br.readLine());
         }
         br.close();
 
-        System.out.println(maxOfThreeArray(dp[n]));
+        System.out.println(dfs(n));
     }
 
-    private static int maxOfThreeArray(int[] arr) {
-        return Math.max(arr[0], Math.max(arr[1], arr[2]));
+    private static int dfs(int idx) {
+        if (idx <= 0) {
+            return 0;
+        }
+        if (dp[idx] != null) {
+            return dp[idx];
+        }
+
+        return dp[idx] = Math.max(Math.max(dfs(idx - 2), dfs(idx - 3) + arr[idx - 1]) + arr[idx],
+                dfs(idx - 1));
     }
 }
