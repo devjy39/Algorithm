@@ -9,13 +9,9 @@ public class No2156 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[][] dp = new int[n][3];
-        int firstNum = Integer.parseInt(br.readLine());
-        dp[0][0] = 0;           // 0개 연속
-        dp[0][1] = firstNum;    // 1개 연속
-        dp[0][2] = firstNum;    // 2개연속
+        int[][] dp = new int[n + 1][3];
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             int curNumber = Integer.parseInt(br.readLine());
             dp[i][0] = maxOfThreeArray(dp[i - 1]);
             dp[i][1] = dp[i - 1][0] + curNumber;
@@ -23,7 +19,7 @@ public class No2156 {
         }
         br.close();
 
-        System.out.println(maxOfThreeArray(dp[n - 1]));
+        System.out.println(maxOfThreeArray(dp[n]));
     }
 
     private static int maxOfThreeArray(int[] arr) {
