@@ -28,15 +28,14 @@ public class No2448 {
         }
 
         String[] result = new String[n];
-        String[] part = star(n >> 1);
+        String[] parts = star(n >> 1);
 
-        System.arraycopy(part, 0, result, 0, part.length);
+        System.arraycopy(parts, 0, result, 0, parts.length);
 
-        int space = part[part.length - 1].length();
-        for (int i = part.length; i < n; i++) {
-            result[i] = part[i - part.length] +
-                    " ".repeat(space - (i - part.length) * 2) +
-                    part[i - part.length];
+        for (int i = parts.length; i < n; i++) {
+            result[i] = parts[i - parts.length] +
+                    " ".repeat(4 * parts.length - 2 * i - 1) +
+                    parts[i - parts.length];
         }
 
         return result;
