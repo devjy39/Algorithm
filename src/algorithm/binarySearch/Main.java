@@ -1,11 +1,13 @@
 package algorithm.binarySearch;
 /*  알고리즘 - 이진 탐색
 *   선 정렬 필요, O(logn)
+*   max 값을 찾을 때 -> right 출력   1 2 /3/ 4 5  3에서 left==right 일 때 3이 답일땐 left=4 right=3 으로 right가 답, 3이 답이 아닌경우도 left = 3, right = 2로 답이 출력됨
+*   min 값을 찾을 때 -> left 출력
 * */
 
 public class Main {
     // 반복문 구조
-    public static int binarySearch(int arr[], int target) {
+    public static int binarySearch(int[] arr, int target) {
         int mid = arr.length / 2;
         int left = 0;
         int right = arr.length - 1;
