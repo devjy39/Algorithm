@@ -26,6 +26,9 @@ public class No2473 {
 
         for (int i = 0; i < n; i++) {
             twoPointer(arr, arr[i], i);
+            if (result == 0) {
+                break;
+            }
         }
 
         Arrays.sort(resultIdx);
@@ -33,22 +36,23 @@ public class No2473 {
     }
 
     private static void twoPointer(int[] arr, int value, int idx) {
-        int left = 0;
+        int left = idx + 1;
         int right = arr.length - 1;
+        int reverseValue = -value;
+        long twoSum;
 
         while (left < right) {
-            long sum = arr[left] + arr[right];
+            twoSum = arr[left] + arr[right];
 
-            if (left != idx && right != idx) {
-                if (Math.abs(result) > Math.abs(sum + value)) {
-                    result = sum + value;
-                    resultIdx[0] = arr[left];
-                    resultIdx[1] = arr[right];
-                    resultIdx[2] = value;
-                }
+            long absSum = Math.abs(twoSum + value);
+            if (absSum < result) {
+                result = absSum;
+                resultIdx[0] = arr[left];
+                resultIdx[1] = arr[right];
+                resultIdx[2] = value;
             }
 
-            if (sum < -value) {
+            if (twoSum < reverseValue) {
                 left++;
             } else {
                 right--;
