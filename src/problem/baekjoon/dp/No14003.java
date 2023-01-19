@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class No14002 {
+public class No14003 {
     static class Number {
         Number prev;
         int number;
