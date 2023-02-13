@@ -1,19 +1,16 @@
 package problem.baekjoon.dp;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class No2228 {
     static int[] arr;
-    static int[][][] dp;
+    static int[][] dp;
     static final int M_INF = -10_000_000;
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("src/data.txt"));
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
@@ -23,30 +20,29 @@ public class No2228 {
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(br.readLine());
         }
+        dp = new int[M + 1][N];
 
-        dp = new int[N][N][M + 1];
-        for (int i = 0; i < N; i++) {
-            int max = M_INF;
-            int sum = 0;
-            for (int j = i; j < N; j++) {
-                max = Math.max(max, sum += arr[j]);
-                sum = Math.max(0, sum);
-                dp[i][j][1] = max;
-            }
+        System.out.println(dfs(M, N - 1));
+    }
+
+    private static int dfs(int m, int idx) {
+        if (m == 0) {
+            return 0;
+        } else if (dp[m][idx] != 0) {
+            return dp[m][idx];
         }
 
-        for (int m = 2; m <= M; m++) {
-            for (int i = 0; i < N; i++) {
-                for (int j = i + (m - 1) * 2; j < N; j++) {
-                    dp[i][j][m] = M_INF;
-                    for (int k = j - 2 * (m - 1); k >= i; k--) {
-                        dp[i][j][m] = Math.max(dp[i][j][m], dp[i][k][1] + dp[k + 2][j][m - 1]);
-                    }
-                }
-            }
+        int range = (m - 1) * 2;
+        int sum = 0;
+        int max = M_INF;
+        int result = M_INF;
+        for (int j = idx; j >= range; j--) {
+            max = Math.max(max, sum += arr[j]);
+            sum = Math.max(0, sum);
+            result = Math.max(result, dfs(m - 1, j - 2) + max);
         }
 
-        System.out.println(dp[0][N - 1][M]);
+        return dp[m][idx] = result;
     }
 
 }
