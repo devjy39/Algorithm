@@ -1,15 +1,20 @@
 package problem.baekjoon.dp;
+
 import java.io.*;
 import java.util.*;
 
 public class No1208 {
     static int[] arr;
+    static int maxSize;
+    static int[][] sums;
+    static long count;
+    static int N, S;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int S = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        S = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
         arr = new int[N];
@@ -17,38 +22,45 @@ public class No1208 {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        List<Integer> list = new ArrayList<>();
-        dfs(list, N / 2, 0, 0);
-
-        Map<Integer, Integer> map = new HashMap<>();
-        mapping(map, N, N / 2, 0);
-
-        long count = S == 0 ? -1 : 0;
-        for (Integer i : list) {
-            count += map.getOrDefault(S - i, 0);
+        int min = 0;
+        int max = 0;
+        for (int i = 0; i < N / 2; i++) {
+            if (arr[i] > 0) {
+                max += arr[i];
+            } else {
+                min += arr[i];
+            }
         }
+        maxSize = Math.max(max, -min);
 
-        System.out.println(count);
+        sums = new int[maxSize + 1][2]; // 0 : -, 1 : +
+        dfs(N / 2, 0, 0);
+        mapping(N, N / 2, 0);
+
+        System.out.println(S == 0 ? count - 1 : count);
     }
 
-    private static void mapping(Map<Integer, Integer> map, int end, int idx, int sum) {
+    private static void mapping(int end, int idx, int sum) {
         if (idx >= end) {
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
+            int abs = Math.abs(S - sum);
+            if (abs >= -maxSize && abs <= maxSize) {
+                count += sums[abs][S < sum ? 0 : 1];
+            }
             return;
         }
 
-        mapping(map, end, idx + 1, sum + arr[idx]);
-        mapping(map, end, idx + 1, sum);
+        mapping(end, idx + 1, sum + arr[idx]);
+        mapping(end, idx + 1, sum);
     }
 
-    private static void dfs(List<Integer> list, int end, int idx, int sum) {
+    private static void dfs(int end, int idx, int sum) {
         if (idx >= end) {
-            list.add(sum);
+            sums[Math.abs(sum)][sum < 0 ? 0 : 1]++;
             return;
         }
 
-        dfs(list, end, idx + 1, sum + arr[idx]);
-        dfs(list, end, idx + 1, sum);
+        dfs(end, idx + 1, sum + arr[idx]);
+        dfs(end, idx + 1, sum);
     }
 
 }
