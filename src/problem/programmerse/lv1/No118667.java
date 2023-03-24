@@ -1,4 +1,4 @@
-package problem.programmerse;
+package problem.programmerse.lv1;
 
 import java.util.LinkedList;
 import java.util.Queue;
