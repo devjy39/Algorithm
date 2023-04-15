@@ -23,7 +23,7 @@ public class No17070 {
 
         dp = new int[n][n][3];
         n--;
-        System.out.println(Math.max(0, dfs(map, 0, 1, 0)));
+        System.out.println(dfs(map, 0, 1, 0));
     }
 
     static int[][][] dp;
@@ -39,18 +39,19 @@ public class No17070 {
         int sum = 0;
 
         if (type != 1 && j < n && map[i][j + 1] != 1) { // 가로 이동
-            sum += Math.max(0, dfs(map, i, j + 1, 0));
+            sum += dfs(map, i, j + 1, 0);
         }
 
         if (type != 0 && i < n && map[i + 1][j] != 1) { // 세로 이동
-            sum += Math.max(0, dfs(map, i + 1, j, 1));
+            sum += dfs(map, i + 1, j, 1);
         }
 
-        if (i < n && j < n && map[i + 1][j + 1] != 1 && map[i + 1][j] != 1 && map[i][j + 1] != 1) { // 대각 이동
-            sum += Math.max(0, dfs(map, i + 1, j + 1, 2));
+        if (i < n && j < n && map[i + 1][j] != 1 && map[i][j + 1] != 1 && map[i + 1][j + 1] != 1) { // 대각 이동
+            sum += dfs(map, i + 1, j + 1, 2);
         }
 
-        return dp[i][j][type] = sum == 0 ? -1 : sum;
+        dp[i][j][type] = sum == 0 ? -1 : sum;
+        return sum;
     }
 
 }
