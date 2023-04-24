@@ -1,8 +1,12 @@
+package problem.baekjoon.etc;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class No1924 {
+   static final String[] DAY_OF_WEEK = { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" };
+   static final int[] DAY = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
    public static void main(String[] args) throws Exception {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -10,23 +14,13 @@ public class Main {
       int x = Integer.parseInt(st.nextToken());
       int y = Integer.parseInt(st.nextToken());
 
-      int[] day = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-      String[] e = { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" };
-      int d = 1;
-      int month = 1;
-      int ed = 0;
-      int dayN = 0;
-
-      while (x != month || y != d) {
-         if (d + 1 > day[dayN]) {
-            d = 0;
-            month++;
-            dayN++;
-         }
-         ed = (ed + 1) % 7;
-         d++;
+      int dayCount = 0;
+      for (int i = 0; i < x - 1; i++) {
+         dayCount += DAY[i];
       }
-      System.out.println(e[ed]);
+      dayCount += y - 1;
+
+      System.out.println(DAY_OF_WEEK[dayCount % 7]);
    }
 
 }
