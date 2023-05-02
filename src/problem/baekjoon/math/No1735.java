@@ -24,6 +24,7 @@ public class No1735 {
         return String.format("%d %d", molecule / gcd, denominator / gcd);
     }
 
+    // gcd 함수의 시간복잡도는 log (max(n,m))
     private static int getGcd(int molecule, int denominator) {
         int mod = molecule % denominator;
         return mod == 0 ? denominator : getGcd(denominator, mod);
