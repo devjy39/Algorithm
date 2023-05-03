@@ -19,14 +19,14 @@ public class No1735 {
         System.out.println(abbreviation((m1 * d2) + (m2 * d1), d1 * d2));
     }
 
-    private static String abbreviation(int molecule, int denominator) {
-        int gcd = getGcd(molecule, denominator);
-        return String.format("%d %d", molecule / gcd, denominator / gcd);
+    private static String abbreviation(int numerator, int denominator) {
+        int gcd = getGcd(numerator, denominator);
+        return String.format("%d %d", numerator / gcd, denominator / gcd);
     }
 
     // gcd 함수의 시간복잡도는 log (max(n,m))
-    private static int getGcd(int molecule, int denominator) {
-        int mod = molecule % denominator;
+    private static int getGcd(int numerator, int denominator) {
+        int mod = numerator % denominator;
         return mod == 0 ? denominator : getGcd(denominator, mod);
     }
 
