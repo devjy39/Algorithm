@@ -3,10 +3,11 @@ package problem.baekjoon.greedy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class No1041 {
-    static final int MAX_DICE = 50, DICE_SIZE = 6;
+    static final int DICE_SIZE = 6;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -30,39 +31,18 @@ public class No1041 {
             return sum - max;
         }
 
-        int one = MAX_DICE;
-        int oneIdx = 0;
-        for (int i = 0; i < DICE_SIZE; i++) {
-            if (dice[i] < one) {
-                one = dice[i];
-                oneIdx = i;
-            }
+        int[] dicePair = new int[3];
+        for (int i = 0; i < 3; i++) {
+            dicePair[i] = Math.min(dice[i], dice[DICE_SIZE - 1 - i]);
         }
-
-        int two = MAX_DICE;
-        int twoIdx = 0;
-        for (int i = 0; i < DICE_SIZE; i++) {
-            if (i != oneIdx && i != DICE_SIZE - 1 - oneIdx) {
-                if (dice[i] < two) {
-                    two = dice[i];
-                    twoIdx = i;
-                }
-            }
-        }
-        two += one;
-
-        int three = MAX_DICE;
-        dice[oneIdx] = dice[DICE_SIZE - 1 - oneIdx] = dice[twoIdx] = dice[DICE_SIZE - 1 - twoIdx] = MAX_DICE;
-        for (int i = 0; i < DICE_SIZE; i++) {
-            three = Math.min(three, dice[i]);
-        }
-        three += two;
+        Arrays.sort(dicePair);
+        dicePair[2] += dicePair[1] += dicePair[0];
 
         long threeCount = 4L;  // 3면
         long twoCount = 8L * n - 12; // 2면
         long oneCount = (n - 2) * (5L * n - 6); // 1면
 
-        return oneCount * one + twoCount * two + threeCount * three;
+        return oneCount * dicePair[0] + twoCount * dicePair[1] + threeCount * dicePair[2];
     }
 
 }
