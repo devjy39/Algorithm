@@ -1,3 +1,5 @@
+package problem.baekjoon.bfs;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -5,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.List;
 
-public class Main {
+public class No17141 {
     static List<Point> virus;
     static int[][] map;
     static int n, virusCount, land, time = Integer.MAX_VALUE;
