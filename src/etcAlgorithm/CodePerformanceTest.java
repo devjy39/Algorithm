@@ -1,3 +1,5 @@
+package etcAlgorithm;
+
 public class CodePerformanceTest {
 
     static void methodTest() {
