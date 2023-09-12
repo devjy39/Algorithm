@@ -1,4 +1,13 @@
 # Algorithm study
+
+## skill
+- backjoon
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=jyeol39)](https://solved.ac/jyeol39/)
+
+- Samsung SW 역량테스트 Pro( Professional, Level B ) [2023/08/05]
+- programmers
+
+## Subject
 - data structure
   - linear
     - array
@@ -38,8 +47,4 @@
     - kruskal
     - prim
 
-- backjoon
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=jyeol39)](https://solved.ac/jyeol39/)
-
-- programmers
