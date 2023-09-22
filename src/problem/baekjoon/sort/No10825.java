@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 public class No10825 {
-    static class Score implements Comparable<Score> {
+    static class Score {
         String name;
         int language;
         int english;
@@ -20,21 +21,21 @@ public class No10825 {
             this.math = math;
         }
 
-        @Override
-        public int compareTo(Score o) {
-            if (this.language != o.language) {
-                return Integer.compare(o.language, this.language);
-            }
-            if (this.english != o.english) {
-                return Integer.compare(this.english, o.english);
-            }
-            if (this.math != o.math) {
-                return Integer.compare(o.math, this.math);
-            }
-
-            return name.compareTo(o.name);
+        public String getName() {
+            return name;
         }
 
+        public int getLanguage() {
+            return language;
+        }
+
+        public int getEnglish() {
+            return english;
+        }
+
+        public int getMath() {
+            return math;
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -53,7 +54,11 @@ public class No10825 {
             scores[i] = new Score(name, language, english, math);
         }
 
-        Arrays.sort(scores);
+        Arrays.sort(scores, Comparator.comparingInt(Score::getLanguage).reversed()
+                .thenComparingInt(Score::getEnglish)
+                .thenComparing(Comparator.comparingInt(Score::getMath).reversed())
+                .thenComparing(Score::getName));
+
         StringBuilder result = new StringBuilder();
         for (Score score : scores) {
             result.append(score.name).append('\n');
