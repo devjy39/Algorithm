@@ -1,8 +1,6 @@
-package practice;
+package practice.collections;
 
-import java.time.LocalDate;
-
-public class PracticeCode {
+public class ArrayDays implements DaysInterface {
     private static final int[] daysArray;
 
     static {
@@ -11,20 +9,14 @@ public class PracticeCode {
         daysArray[4] = daysArray[6] = daysArray[9] = daysArray[11] = 30;
     }
 
-    public int getDays() {
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        int month = now.getMonthValue();
-
+    public int getDays(int year, int month) {
         return month == 2 ? getFebruaryDays(year) : daysArray[month];
     }
 
     private static int getFebruaryDays(int year) {
         if ((year % 4 == 0) && (year % 100 != 0) && (year % 400) == 0) {
             return 29;
-        } else {
-            return 28;
         }
+        return 28;
     }
-
 }

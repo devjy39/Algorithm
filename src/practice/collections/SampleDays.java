@@ -1,6 +1,4 @@
-package practice;
-
-import java.time.LocalDate;
+package practice.collections;
 
 public class SampleDays implements DaysInterface {
 
